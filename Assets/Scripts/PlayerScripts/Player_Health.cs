@@ -1,0 +1,67 @@
+﻿using UnityEngine;
+using System.Collections;
+using UnityEngine.UI;
+
+namespace S3
+{
+    public class Player_Health : MonoBehaviour {
+
+        private GameManager_Master gameManagerMaster;
+        private Player_Master playerMaster;
+        public int playerHealth;
+        public Text healthText;
+
+
+        void OnEnable()
+        {
+            gameManagerMaster = GameObject.Find("GameManager").GetComponent<GameManager_Master>();
+            playerMaster = GetComponent<Player_Master>();
+            SetUI();
+            playerMaster.EventPlayerHealthDeduction += DeductHealth;
+            playerMaster.EventPlayerHealthIncrease += IncreaseHealth;
+        }
+        
+        void OnDisable()
+        {
+        
+        }
+        
+        void Start () 
+        {
+	        StartCoroutine(TestHealthDeduction());
+        }
+	
+        IEnumerator TestHealthDeduction()
+        {
+            yield return new WaitForSeconds(4);
+            //DeductHealth(100);
+            playerMaster.CallEventPlayerHealthDeduction(50);
+        }
+
+        void DeductHealth(int healthChange)
+        {
+            playerHealth -= healthChange;
+            if(playerHealth <= 0)
+            {
+                gameManagerMaster.CallEventGameOver();
+            }
+        }
+
+        void IncreaseHealth(int healthChange)
+        {
+            playerHealth += healthChange;
+            if(playerHealth > 100)
+            {
+                playerHealth = 100;
+            }
+        }
+
+        void SetUI()
+        {
+            if(healthText != null)
+            {
+                healthText.text = playerHealth.ToString();
+            }
+        }
+    }
+}
