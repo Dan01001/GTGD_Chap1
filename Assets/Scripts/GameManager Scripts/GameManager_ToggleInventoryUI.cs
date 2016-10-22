@@ -33,7 +33,7 @@ namespace S3
                ToggleInventoryUI();
             }
         }
-        void ToggleInventoryUI()
+        public void ToggleInventoryUI()
         {
             if(inventoryUI != null)
             {

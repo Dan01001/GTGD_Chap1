@@ -35,7 +35,7 @@ namespace S3
         {
             yield return new WaitForSeconds(4);
             //DeductHealth(100);
-            playerMaster.CallEventPlayerHealthDeduction(50);
+           // playerMaster.CallEventPlayerHealthDeduction(50);
         }
 
         void DeductHealth(int healthChange)
