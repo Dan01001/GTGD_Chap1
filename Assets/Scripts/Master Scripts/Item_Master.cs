@@ -28,9 +28,11 @@ namespace S3
             if(EventObjectThrow != null)
             {
                 EventObjectThrow();
-                playerMaster.CallEventInventoryChanged();
+                
             }
-            
+            playerMaster.CallEventInventoryChanged();
+            playerMaster.CallEventHandsEmpty();
+
         }
 
         public void CallEventObjectPickup()
@@ -38,8 +40,9 @@ namespace S3
             if(EventObjectPickup != null)
             {
                 EventObjectPickup();
-                playerMaster.CallEventInventoryChanged();
+                
             }
+            playerMaster.CallEventInventoryChanged();
         }
 
         public void CallEventPickupAction(Transform item)

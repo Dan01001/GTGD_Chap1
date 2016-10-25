@@ -8,9 +8,9 @@ namespace S3
 
         [Tooltip("What layer is being use for items.")]
         public LayerMask layerToDetect;
-
+        [Tooltip("What transform will the ray be fired from?")]
         public Transform rayTransformPivot;
-
+        [Tooltip("the editor input button that will be used for picking up items.")]
         public string buttonPickup;
 
         private Transform itemAvailableforPickup;
@@ -28,7 +28,8 @@ namespace S3
         void Update () 
         {
             CastRayForDetectingItems();
-            CheckForItemPickupAttempt();	
+            CheckForItemPickupAttempt();
+           
         }
 
         void CastRayForDetectingItems()
@@ -48,7 +49,7 @@ namespace S3
         {
             if(Input.GetButtonDown(buttonPickup) && Time.timeScale > 0 && itemInRange && itemAvailableforPickup.root.tag != GameManager_References._playerTag)
             {
-                //Debug.Log("Pickup attempted");
+               
                 // itemAvailableforPickup.GetComponent<Item_Master>().CallEventPickupAction(rayTransformPivot);
                 itemAvailableforPickup.GetComponent<Item_Master>().CallEventPickupAction(rayTransformPivot);
             }
@@ -56,7 +57,10 @@ namespace S3
 
         void OnGUI()
         {
-            GUI.Label(new Rect(Screen.width / 2 - labelWidth / 2, Screen.height / 2, labelWidth, labelHeight), itemAvailableforPickup.name);
+            if (itemInRange && itemAvailableforPickup != null)
+            {
+                GUI.Label(new Rect(Screen.width / 2 - labelWidth / 2, Screen.height / 2, labelWidth, labelHeight), itemAvailableforPickup.name);
+            }
         }
     }
 }
