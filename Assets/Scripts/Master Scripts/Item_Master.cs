@@ -30,9 +30,9 @@ namespace S3
                 EventObjectThrow();
                 
             }
-            playerMaster.CallEventInventoryChanged();
             playerMaster.CallEventHandsEmpty();
-
+            playerMaster.CallEventInventoryChanged();
+            
         }
 
         public void CallEventObjectPickup()

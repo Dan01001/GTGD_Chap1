@@ -12,18 +12,19 @@ namespace S3
         public class AmmoTypes
         {
             public string ammoName;
-            public int ammoCurrentCarried;
             public int ammoMaxQuantity;
+            public int ammoCurrentCarried;
+            
 
             public AmmoTypes(string aName, int aMaxQuantity, int aCurrentCarried)
             {
                 ammoName = aName;
-                ammoCurrentCarried = aMaxQuantity;
-                ammoMaxQuantity = aCurrentCarried;
+                ammoCurrentCarried = aCurrentCarried;
+                ammoMaxQuantity = aMaxQuantity;
             }
         }
 
-        public List<AmmoTypes> typesOfAmmunition = new List<AmmoTypes>();
+        public List<AmmoTypes>typesOfAmmunition = new List<AmmoTypes>();
 
 
         void OnEnable()
