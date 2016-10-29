@@ -23,12 +23,13 @@ namespace S3
         
         void OnDisable()
         {
-        
+            playerMaster.EventPlayerHealthDeduction -= DeductHealth;
+            playerMaster.EventPlayerHealthIncrease -= IncreaseHealth;
         }
         
         void Start () 
         {
-	        StartCoroutine(TestHealthDeduction());
+	        //StartCoroutine(TestHealthDeduction());
         }
 	
         IEnumerator TestHealthDeduction()
@@ -45,6 +46,8 @@ namespace S3
             {
                 gameManagerMaster.CallEventGameOver();
             }
+
+            SetUI();
         }
 
         void IncreaseHealth(int healthChange)
@@ -54,12 +57,15 @@ namespace S3
             {
                 playerHealth = 100;
             }
+
+            SetUI();
         }
 
         void SetUI()
         {
             if(healthText != null)
             {
+               
                 healthText.text = playerHealth.ToString();
             }
         }
