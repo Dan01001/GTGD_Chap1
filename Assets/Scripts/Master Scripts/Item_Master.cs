@@ -15,15 +15,23 @@ namespace S3
         public event PickupActionEventHandler EventPickupAction;
 
 
-        void OnEnable()
+       /* void OnEnable()
         {
             if(GameManager_References._player != null)
             {
                 playerMaster = GameManager_References._player.GetComponent<Player_Master>();
             }
         }
-        
-       public void CallEventObjectThrow()
+*/
+        void Start()
+        {
+            if (GameManager_References._player != null)
+            {
+                playerMaster = GameManager_References._player.GetComponent<Player_Master>();
+            }
+        }
+
+        public void CallEventObjectThrow()
         {
             if(EventObjectThrow != null)
             {

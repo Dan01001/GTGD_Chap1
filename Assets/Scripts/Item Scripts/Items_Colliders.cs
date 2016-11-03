@@ -13,7 +13,7 @@ namespace S3
         void OnEnable()
         {
             itemMaster = GetComponent<Item_Master>();
-            CheckIfStartsInInventory();
+            
             itemMaster.EventObjectThrow += EnableColliders;
             itemMaster.EventObjectPickup += DisableColliders;
         }
@@ -22,6 +22,11 @@ namespace S3
         {
             itemMaster.EventObjectThrow -= EnableColliders;
             itemMaster.EventObjectPickup -= DisableColliders;
+        }
+
+        void start()
+        {
+            CheckIfStartsInInventory();
         }
         
         void CheckIfStartsInInventory()

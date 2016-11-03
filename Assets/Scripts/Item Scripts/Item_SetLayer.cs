@@ -12,7 +12,7 @@ namespace S3
         void OnEnable()
         {
             itemMaster = GetComponent<Item_Master>();
-            SetLayerOnEnable();
+            
             itemMaster.EventObjectPickup += SetItemToPickupLayer;
             itemMaster.EventObjectThrow += SetItemToThrowLayer;
 
@@ -22,6 +22,11 @@ namespace S3
         {
             itemMaster.EventObjectPickup -= SetItemToPickupLayer;
             itemMaster.EventObjectThrow -= SetItemToThrowLayer;
+        }
+
+        void start()
+        {
+            SetLayerOnEnable();
         }
         
         

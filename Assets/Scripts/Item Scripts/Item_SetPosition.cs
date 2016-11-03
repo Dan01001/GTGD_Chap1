@@ -11,7 +11,7 @@ namespace S3
         void OnEnable()
         {
             itemMaster = GetComponent<Item_Master>();
-            SetPositionOnPlayer();
+           
             itemMaster.EventObjectPickup += SetPositionOnPlayer;
         }
         
@@ -19,6 +19,12 @@ namespace S3
         {
             itemMaster.EventObjectPickup -= SetPositionOnPlayer;
         }
+
+        void start()
+        {
+            SetPositionOnPlayer();
+        }
+
 
         void SetPositionOnPlayer()
         {

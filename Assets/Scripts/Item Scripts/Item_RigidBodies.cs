@@ -11,7 +11,7 @@ namespace S3
         void OnEnable()
         {
             itemMaster = GetComponent<Item_Master>();
-            CheckIfStartsInInventory();
+            
             itemMaster.EventObjectThrow += SetIsKinematicToFalse;
             itemMaster.EventObjectPickup += SetIsKinematicToTrue;
         }
@@ -20,6 +20,11 @@ namespace S3
         {
             itemMaster.EventObjectThrow -= SetIsKinematicToFalse;
             itemMaster.EventObjectPickup -= SetIsKinematicToTrue;
+        }
+
+        void start()
+        {
+            CheckIfStartsInInventory();
         }
         
         void CheckIfStartsInInventory()
